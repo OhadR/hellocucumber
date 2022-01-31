@@ -18,6 +18,6 @@
     },
     "homepage": "https://github.com/OhadR/hellocucumber#readme",
     "devDependencies": {
-        "@cucumber/cucumber": "^8.0.0-rc.2"
+        "@cucumber/cucumber": "7.3.2"
     }
 }
