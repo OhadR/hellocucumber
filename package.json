@@ -18,7 +18,9 @@
     },
     "homepage": "https://github.com/OhadR/hellocucumber#readme",
     "devDependencies": {
-        "@cucumber/cucumber": "7.3.2"
+        "@cucumber/cucumber": "7.3.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5"
     },
     "dependencies": {
         "debug": "^4.3.3",

@@ -20,7 +20,7 @@ app.post('/run', async function (req, res) {
     debug(`run is called`);
     debug('process.cwd()', process.cwd());
 
-    const runArgs = ['node', '.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js', 'src/features/**/*.feature', '--require-module', 'ts-node/register', '--require', __dirname + '/src/steps/**/*.ts'];
+    const runArgs = ['node', '.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js', 'features/**/*.feature', '--require-module', 'ts-node/register', '--require', __dirname + '/src/steps/**/*.ts'];
 
 //    let runArgs = ['node', '.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js'];
     let cliArgs = {argv : runArgs, cwd: process.cwd(), stdout: process.stdout};
