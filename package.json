@@ -19,5 +19,9 @@
     "homepage": "https://github.com/OhadR/hellocucumber#readme",
     "devDependencies": {
         "@cucumber/cucumber": "7.3.2"
+    },
+    "dependencies": {
+        "debug": "^4.3.3",
+        "express": "^4.17.2"
     }
 }
