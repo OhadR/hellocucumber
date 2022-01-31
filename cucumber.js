@@ -1,3 +1,4 @@
 module.exports = {
-    default: `--format-options '{"snippetInterface": "synchronous"}' --require steps/**/*.js'`
+    default: [`--require steps/**/*.js'`,
+        '--publish'].join(' ')
 }
