@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es2019",
+        //"rootDir": "src",
+        "outDir": "dist",
+        "module": "commonjs",
+        //let debugger stop in TS files:
+        "sourceMap": true,
+        "allowJs": false,
+        "experimentalDecorators": true
+    },
+    "include": ["steps/**/*"]
+}

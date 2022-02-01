@@ -8,4 +8,4 @@
     npm install ts-node --save-dev
     npm install typescript --save-dev
 
-node controller.js
+    node controller.ts

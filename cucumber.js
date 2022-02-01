@@ -1,4 +1,6 @@
 module.exports = {
-    default: [`--require steps/**/*.js'`,
+    default: [
+        '--require-module ts-node/register',    // Load TypeScript module
+        `--require steps/**/*.ts'`,
         '--publish'].join(' ')
 }
