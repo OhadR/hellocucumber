@@ -1,7 +1,7 @@
+const { spawn } = require('child_process');
 const path = require('path');
 const debug = require('debug')('controller');
 
-const cucumber = require('@cucumber/cucumber');
 const express = require("express");
 const app = express();
 
@@ -18,28 +18,29 @@ app.get('/health', function (req, res) {
 
 app.post('/run', async function (req, res) {
     debug(`run is called`);
-    debug('process.cwd()', process.cwd());
 
-    const runArgs = ['node', '.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js'];
-
-//    let runArgs = ['node', '.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js'];
-    let cliArgs = {argv : runArgs, cwd: process.cwd(), stdout: process.stdout};
-    debug(JSON.stringify(cliArgs));
-
-    const definitionsFilePath = path.join(process.cwd(), 'cucumber.js')
-    const definitions = require(definitionsFilePath) // eslint-disable-line @typescript-eslint/no-var-requires
-    debug(definitions);
-    debug(definitions['default']);
-
-    const cli = new cucumber.Cli(cliArgs);
-    const ret = await cli.run();
-    debug(JSON.stringify(ret));
+    spawnProcess();
 
     res
         .status(200)
         .json({status: 'ok'});
 });
 
+
+function spawnProcess () {
+    console.log(`############   Going to spawn cucumber-js! #############`)
+    const prs = spawn('node', ['.\\node_modules\\@cucumber\\cucumber\\bin\\cucumber-js'], {stdio: 'inherit', detached : false});
+
+    console.log(`Spawned cucumber-js pid: ${prs.pid}`);
+
+    prs.on('error', (err) => {
+        console.error(`Failed to start cucumber-js`);
+    });
+
+    prs.on('close', (code) => {
+        console.log(`############   'cucumber-js' process exited with code ${code} #############`);
+    });
+}
 
 app.listen(process.env.PORT, async() => {
     debug(`Express started on port ${process.env.PORT}`);

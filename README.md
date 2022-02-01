@@ -1,5 +1,7 @@
 # hellocucumber
 
+this is the JS (no TS) version
+
     npm init --yes
     npm install --save-dev @cucumber/cucumber
     npm test
