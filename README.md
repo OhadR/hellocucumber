@@ -8,4 +8,16 @@
     npm install ts-node --save-dev
     npm install typescript --save-dev
 
-node controller.js
+set env-vars:
+
+    set PORT=8088
+    set DEBUG=*
+
+running the controller:
+    
+    node controller.js
+
+...and then call the server:
+
+    POST
+    http://{{cucumber-host}}:{{process.env.PORT}}/run
