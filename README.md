@@ -1,5 +1,20 @@
 # hellocucumber
 
+## the challenge
+
+running a cucumber in a "regular" way, meaning by `npm test` is a common use case and I have here in my repos many sample-projects.
+The challenge was with a VPC - closed env on AWS with very limited access. So cucumber has to be one of the dockers in that
+env, and deployed in the VPC. Thus, it would be very difficult to run it by `npm test` because we have no access to the docker itself.
+**The solution** is to expose a port, and to invoke cucumber using HTTP call.
+
+At first, I was trying to use cucumber's Cli but it was not working with ts-flow (tested in this repo on another branch). Later 
+I found a way to run Cli even on ts-flows. But another problem occured when step-definitions were loaded only once, and
+in the second run cucumber did not find them ([see below](https://github.com/cucumber/cucumber-js/issues/1278)).
+
+Eventually I used nodejs' ChildProcess.spawn(), to create a new process and run cucumber in it.
+
+---
+
 this is the JS (no TS) version
 
     npm init --yes
